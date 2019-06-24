@@ -26,7 +26,7 @@ export default class Canvas extends React.Component {
             };
             // Add the position to the line array
             this.line = this.line.concat(positionData);
-            this.paint(this.prevPos, offSetData, 'black');
+            this.paint(this.prevPos, offSetData, 'white');
         }
     };
 
@@ -52,7 +52,7 @@ export default class Canvas extends React.Component {
     };
 
     clear = () => {
-        this.ctx.fillStyle = 'white';
+        this.ctx.fillStyle = 'black';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         this.props.clear();
     };
@@ -62,7 +62,7 @@ export default class Canvas extends React.Component {
         this.canvas.height = this.imageDim * this.scale;
         this.ctx = this.canvas.getContext('2d');
         this.ctx.globalAlpha = 1;
-        this.ctx.fillStyle = 'white';
+        this.ctx.fillStyle = 'black';
         this.ctx.lineJoin = 'round';
         this.ctx.lineCap = 'round';
         this.ctx.lineWidth = 20;

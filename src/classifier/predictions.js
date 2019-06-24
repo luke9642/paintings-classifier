@@ -43,10 +43,17 @@ export default class Predictions extends React.Component {
         if (!this.props.predictions)
             return null;
 
+        let values = this.props.predictions
+            .map((prediction, i) => [prediction, i])
+            .sort(([pred1,], [pred2,]) => pred2 - pred1);
+
+        values = values.slice(0, 3)
+            .map(([, i]) => this.classes[i]);
+
         return (
             <Row>
-                {this.props.predictions.map((pred, i) => (
-                    <Prediction key={i} position={i}>{this.classes[pred]}</Prediction>
+                {values.map((val, i) => (
+                    <Prediction key={i} position={i}>{val}</Prediction>
                 ))}
             </Row>
         )
